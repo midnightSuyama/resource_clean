@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+
+require 'resource_clean'
+require 'resource_clean/version'
+require 'optparse'
+
+OptionParser.new do |opt|
+  Version = ResourceClean::VERSION
+  opt.banner = "Usage: #{File.basename($0)} [directory]"
+  opt.parse!
+
+  if ARGV.empty?
+    puts opt.help
+    exit
+  end
+end
+
+ResourceClean.run(ARGV.first)
